@@ -13,6 +13,7 @@
     "moduleResolution": "node",               /* Modülleri çözümlemek için kullanılacak strateji: 'node' (Node.js) veya 'classic' (TypeScript 1.6 ve öncesi). */
     "esModuleInterop": true,                  /* CommonJS ve ES Modules arasındaki uyumsuzlukları gidermek için ES modüllerini CommonJS'ye sarmalar. */
     "forceConsistentCasingInFileNames": true,  /* Dosya adlarında tutarlı büyük/küçük harf kullanımını zorunlu kılar. */
+    "allowSyntheticDefaultImports": true,
 
     /* Kaynak Haritaları */
     "sourceMap": true

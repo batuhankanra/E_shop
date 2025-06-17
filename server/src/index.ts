@@ -3,15 +3,16 @@ import express from 'express'
 import { log } from './log/log';
 import { config } from './config';
 import { db } from './lib/db';
-import morgan from 'morgan';
-import routes from './routes/categories.route';
+import passport from 'passport';
+import routes from './routes/route';
 import { requestLogger } from './middleware/requestLogger';
-
+import './config/passport';
 const app=express()
 
 app.use(express.json())
 app.use(cors())
 app.use(express.urlencoded({extended:true}))
+app.use(passport.initialize());
 db()
 
 app.use(requestLogger);

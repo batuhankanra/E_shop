@@ -4,7 +4,7 @@ import { Router } from "express";
 const routes =Router()
 
 
-routes.use('/category',(req,res)=>{
+routes.post('/category',(req,res)=>{
     res.send('sa')
 })
 
