@@ -1,0 +1,11 @@
+[90m[22:31:44][39m [ERROR] MongoRuntimeError: Unable to parse localhost:27017s with URL
+    at new HostAddress (C:\Users\Immor\Desktop\fullStack\Teknoloji-shop\server\node_modules\mongodb\src\utils.ts:898:28)
+    at fromString (C:\Users\Immor\Desktop\fullStack\Teknoloji-shop\server\node_modules\mongodb\src\utils.ts:947:12)
+    at Array.map (<anonymous>)
+    at parseOptions (C:\Users\Immor\Desktop\fullStack\Teknoloji-shop\server\node_modules\mongodb\src\connection_string.ts:266:43)
+    at new MongoClient (C:\Users\Immor\Desktop\fullStack\Teknoloji-shop\server\node_modules\mongodb\src\mongo_client.ts:387:32)
+    at NativeConnection.createClient (C:\Users\Immor\Desktop\fullStack\Teknoloji-shop\server\node_modules\mongoose\lib\drivers\node-mongodb-native\connection.js:343:14)
+    at NativeConnection.openUri (C:\Users\Immor\Desktop\fullStack\Teknoloji-shop\server\node_modules\mongoose\lib\connection.js:1071:34)
+    at Mongoose.connect (C:\Users\Immor\Desktop\fullStack\Teknoloji-shop\server\node_modules\mongoose\lib\mongoose.js:450:15)
+    at db (C:\Users\Immor\Desktop\fullStack\Teknoloji-shop\server\src\lib\db.ts:8:24)
+    at Object.<anonymous> (C:\Users\Immor\Desktop\fullStack\Teknoloji-shop\server\src\index.ts:12:3)

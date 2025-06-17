@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",                       
+    "module": "CommonJS",                     
+    "outDir": "./dist",                      
+    "rootDir": "./src",    
+                       
+    "strict": true,                        
+    "noImplicitThis": true,                   /* 'this' ifadesi 'any' türünde olduğunda hata verir. */
+    "alwaysStrict": true,                     /* JavaScript çıktısına 'use strict' ekler. */
+
+    /* Modül Çözümleme Seçenekleri */
+    "moduleResolution": "node",               /* Modülleri çözümlemek için kullanılacak strateji: 'node' (Node.js) veya 'classic' (TypeScript 1.6 ve öncesi). */
+    "esModuleInterop": true,                  /* CommonJS ve ES Modules arasındaki uyumsuzlukları gidermek için ES modüllerini CommonJS'ye sarmalar. */
+    "forceConsistentCasingInFileNames": true,  /* Dosya adlarında tutarlı büyük/küçük harf kullanımını zorunlu kılar. */
+
+    /* Kaynak Haritaları */
+    "sourceMap": true
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"                            /* Derlenmeyecek dosya veya dizinlerin desenleri. */
+  ]
+}
