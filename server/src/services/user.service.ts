@@ -30,7 +30,9 @@ class UserServices{
     }
     async createUser(name:string,email:string,password:string):Promise<IUSER | null> {
         try{
+            
             const data =await User.create({name,email,password})
+            
             if(!data){
                 
                 return null

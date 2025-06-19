@@ -6,6 +6,11 @@ interface IUSER extends mongoose.Document{
     name:string,
     email:string,
     password:string
+    role:mongoose.Types.ObjectId
+}
+interface IROLE extends mongoose.Document{
+  name:string,
+  permissions :[string]
 }
 interface ConfigProps{
     PORT: string;
@@ -15,4 +20,8 @@ interface ConfigProps{
 }
 interface JwtPayload {
   id: string;
+}
+interface UpdateRoleInput {
+  name?: string;
+  permissions?: string[];
 }

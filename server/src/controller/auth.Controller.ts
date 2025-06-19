@@ -1,5 +1,4 @@
 import { Request,Response } from "express";
-import { User } from "../models/User";
 import { generateToken } from "../utils/jwt";
 import userService from "../services/user.service";
 
@@ -23,7 +22,12 @@ class AuthController{
                 res.status(400).json({msg:'Böyle bir email var'})
                 return 
             }
-            const user =await User.create({name,email,password:hashPassword})
+            const user =await userService.createUser(name,email,hashPassword)
+            
+            if(!user){
+                res.status(400).json({msg:'Böyles bir email var'})
+                return
+            }
             const token =generateToken(user)
             res.status(201).json({msg:'Kayit oluşturuldu',token})
             return 

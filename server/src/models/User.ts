@@ -14,6 +14,10 @@ const UserSchema=new Schema<IUSER>({
     password:{
         type:String,
         required:true
+    },
+    role:{
+        type:Schema.Types.ObjectId,
+        ref:'Role'
     }
 },{
     versionKey:false,
