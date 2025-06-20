@@ -1,5 +1,6 @@
+import mongoose from "mongoose";
 import { Categories } from "../models/categories";
-import { findProps, ICATEGORIES } from "../typescript/props";
+import { categoriesUpdatesProps, findProps, ICATEGORIES } from "../typescript/props";
 
 
 
@@ -25,6 +26,34 @@ class categoryServices{
             return null
         }
 
+    }
+    async update(id:string,updates:categoriesUpdatesProps):Promise<boolean>{
+        try{
+            if(!mongoose.Types.ObjectId.isValid(id)){
+                return false
+            }
+            const data=await Categories.updateOne({_id:id},updates)
+            if(data.modifiedCount===0){
+                return false
+            }
+            return true
+        }catch {
+            return false
+        }
+    }
+    async delete(id:string){
+         try{
+            if(!mongoose.Types.ObjectId.isValid(id)){
+                return false
+            }
+            const data=await Categories.deleteOne({_id:id})
+            if(data.deletedCount===0){
+                return false
+            }
+            return true
+        }catch {
+            return false
+        }
     }
 }
 

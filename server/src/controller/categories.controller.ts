@@ -90,8 +90,8 @@ class CategoriesController{
                 res.status(400).json({msg:'Ürün bulunamadı'})
                 return
             }
-            const update=await Categories.updateOne({_id:id},updates)
-            if(!update){
+            const data=await categoriesService.update(id,updates)
+            if(!data){
                 res.status(400).json({msg:'Ürün bulunamadı'})
                 return
             }
@@ -109,7 +109,11 @@ class CategoriesController{
                 res.status(400).json({msg:'Ürün bulunamadı'})
                 return
             }
-            await Categories.deleteOne({_id:id})
+            const data=await categoriesService.delete(id)
+            if(!data){
+                res.status(400).json({msg:'Ürün bulunamadı'})
+                return
+            }
            
             res.status(200).json({msg:'Başarılı'})
             return

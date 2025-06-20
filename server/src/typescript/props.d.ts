@@ -64,4 +64,5 @@ interface categoriesUpdatesProps{
   name?:string
   is_active?:boolean
   slug?:string
+  id?:string
 }
