@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 import { Role } from "../models/role";
-import { findRoleProps, IROLE, UpdateRoleInput } from "../typescript/props";
+import { findProps, IROLE, UpdateRoleInput } from "../typescript/props";
 
 
 class roleService{
-    async find({name,id}:findRoleProps):Promise<IROLE | null>{
+    async find({name,id}:findProps):Promise<IROLE | null>{
         try{
             let data
             if(id){

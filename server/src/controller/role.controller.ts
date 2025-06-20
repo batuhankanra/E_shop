@@ -1,5 +1,4 @@
 import { Request,Response } from "express";
-import { Role } from "../models/role";
 import roleService from "../services/role.service";
 import { UpdateRoleInput } from "../typescript/props";
 

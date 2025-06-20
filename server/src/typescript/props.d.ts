@@ -56,8 +56,12 @@ interface UpdateRoleInput {
   name?: string;
   permissions?: string[];
 }
-interface findRoleProps{
+interface findProps{
   id?:string
   name?:string
 }
-
+interface categoriesUpdatesProps{
+  name?:string
+  is_active?:boolean
+  slug?:string
+}
