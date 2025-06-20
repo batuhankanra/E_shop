@@ -25,3 +25,7 @@ interface UpdateRoleInput {
   name?: string;
   permissions?: string[];
 }
+interface findRoleProps{
+  id?:string
+  name?:string
+}

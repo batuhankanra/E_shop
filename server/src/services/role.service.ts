@@ -1,11 +1,19 @@
+import mongoose from "mongoose";
 import { Role } from "../models/role";
-import { IROLE } from "../typescript/props";
+import { findRoleProps, IROLE, UpdateRoleInput } from "../typescript/props";
 
 
 class roleService{
-    async find(name:string):Promise<IROLE | null>{
+    async find({name,id}:findRoleProps):Promise<IROLE | null>{
         try{
-            const data =await Role.findOne({name})
+            let data
+            if(id){
+               data =await Role.findOne({_id:id})
+            }else{
+                data =await Role.findOne({name})
+            }
+             
+            
             if(!data){
                 return null
             }
@@ -38,8 +46,25 @@ class roleService{
     }
     async delete(id:string):Promise<boolean>{
         try{
+            if(!mongoose.Types.ObjectId.isValid(id)){
+                return false
+            }
             const deleteID = await Role.deleteOne({_id:id})
             if(deleteID.deletedCount>0){
+                return true
+            }
+            return false
+        }catch{
+            return false
+        }
+    }
+    async update(id:string,updates:UpdateRoleInput):Promise<boolean>{
+        try{
+            if(!mongoose.Types.ObjectId.isValid(id)){
+                return false
+            }
+            const data = await Role.updateOne({_id:id},updates)
+            if(data.modifiedCount>0){
                 return true
             }
             return false

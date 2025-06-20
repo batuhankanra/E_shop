@@ -12,7 +12,7 @@ class roleController{
                 res.status(400).json({msg:'Bütün alanları doldurun'})
                 return
             }
-            const existing=await roleService.find(name)
+            const existing=await roleService.find({name})
             if(existing){
                 res.status(400).json({msg:'Bu isimde bir rol zaten var.'})
                 return
@@ -20,7 +20,7 @@ class roleController{
             const roleCreate=await roleService.create(name,permissions)
             if(!roleCreate){
                 res.status(500).json({msg:'Data base de sıkıntı.'})
-                return
+                return 
             }
             res.status(201).json({msg:'rol oluşturuldu'})
             return
@@ -45,8 +45,11 @@ class roleController{
     public async getID(req:Request,res:Response){
          try{
             const {id} =req.params
-            console.log(id)
-            const data=await Role.findById({_id:id})
+            const data=await roleService.find({id})
+            if(!data){
+                res.status(400).json({msg:'Böyle bir kullanıcı yok'})
+                return
+            }
           
             res.status(200).json(data)
             return
@@ -63,9 +66,12 @@ class roleController{
             const update: UpdateRoleInput = {};
             if (name) update.name = name;
             if (Array.isArray(permissions) || permissions.length>0) update.permissions = permissions
-            await Role.updateOne({_id:id},{name,permissions})
+            const updates=await roleService.update(id,update)
             
-          
+          if(!updates){
+             res.status(400).json({msg:'Böyle bir kullanıcı yok'})
+             return
+          }
             res.status(200).json({msg:'Başarılı'})
             return
         }catch(err){
