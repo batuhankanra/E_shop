@@ -4,7 +4,8 @@ import { IPRODUCT } from "../typescript/props";
 const productSchema=new Schema<IPRODUCT>({
     name:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
     description:{
         type:String,

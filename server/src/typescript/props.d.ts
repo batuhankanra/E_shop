@@ -66,3 +66,13 @@ interface categoriesUpdatesProps{
   slug?:string
   id?:string
 }
+interface ProductProps{
+  id?:string
+  name?: string;
+  description?: string;
+  price?: number;
+  stock?: number;
+  images?: string[];
+  is_active?:boolean;
+  category?: string;
+}
