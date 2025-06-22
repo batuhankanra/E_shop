@@ -1,8 +1,7 @@
 import { Request, Response } from "express";
-import { Product } from "../models/product";
 import productService from "../services/product.service";
-import { IPRODUCT, ProductProps } from "../typescript/props";
-import path from "path";
+import { ProductProps } from "../typescript/props";
+
 import { log } from "../log/log";
 
 

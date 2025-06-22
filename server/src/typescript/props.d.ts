@@ -76,3 +76,4 @@ interface ProductProps{
   is_active?:boolean;
   category?: string;
 }
+type USerPRops=Partial<IUSER | undefined>
