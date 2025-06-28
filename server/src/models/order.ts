@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
-import { IORDER } from "../typescript/props";
+import { IORDER } from "../typescript/order";
+
 
 const orderSchema=new Schema<IORDER>({
     user:{

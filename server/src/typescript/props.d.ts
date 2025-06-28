@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 
 
 interface IUSER extends mongoose.Document{
+    _id:mongoose.Types.ObjectId
     name:string,
     email:string,
     password:string
@@ -26,16 +27,7 @@ interface ICATEGORIES extends mongoose.Document{
   slug: string;
   is_active:boolean;
 }
-interface IORDER extends mongoose.Document{
-  user: mongoose.Types.ObjectId;
-  items:{
-    product:mongoose.Types.ObjectId
-    quantity:number
-    price:number
-  }[],
-  totalAmount:number
-  status:'pending' | 'paid' | 'shipped' | 'delivered' | 'cancelled';
-}
+
 interface ICART extends mongoose.Document{
   user: mongoose.Types.ObjectId;
   items: {
