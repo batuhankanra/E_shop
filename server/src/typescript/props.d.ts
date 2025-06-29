@@ -28,13 +28,6 @@ interface ICATEGORIES extends mongoose.Document{
   is_active:boolean;
 }
 
-interface ICART extends mongoose.Document{
-  user: mongoose.Types.ObjectId;
-  items: {
-    product: mongoose.Types.ObjectId;
-    quantity: number;
-  }[];
-}
 interface ConfigProps{
     PORT: string;
     DB_URL: string;

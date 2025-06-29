@@ -1,5 +1,6 @@
 import mongoose, { Schema } from "mongoose";
-import { ICART } from "../typescript/props";
+import { ICART } from "../typescript/cart";
+
 
 const cartSchema=new Schema<ICART>({
     user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
