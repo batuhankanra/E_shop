@@ -28,18 +28,30 @@ class productService{
         }
     
     }
-    async upload(file:Express.Multer.File,folder='uploads',fileNamePrefix='image'):Promise<string  >{
-        if(!file) return ""
-        const ext = path.extname(file.originalname).toLowerCase()
-        const safePrefix = fileNamePrefix.replace(/[^a-z0-9]/gi, '_').toLowerCase();
-        const fileName=`${safePrefix}-${ Date.now()}${ext}`;
-        const uploadPath=path.join(__dirname,'..',folder)
-        if (!fs.existsSync(uploadPath)) {
-            fs.mkdirSync(uploadPath, { recursive: true });
-        }
-        const filePath=path.join(uploadPath,fileName)
-        fs.writeFileSync(filePath,file.buffer)
-        return fileName
+    async upload(files:Express.Multer.File[],folder='uploads',fileNamePrefix='image'):Promise<string[]  >{
+        try{
+            const uploaded: string[] = [];
+            
+
+            for (const file of files) {
+                const ext = path.extname(file.originalname).toLowerCase();
+                const safePrefix = fileNamePrefix.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+                const fileName = `${safePrefix}-${Date.now()}${ext}`;
+                const uploadPath = path.join(__dirname, '..', folder);
+                if (!fs.existsSync(uploadPath)) {
+                    fs.mkdirSync(uploadPath, { recursive: true });
+                }
+                const filePath = path.join(uploadPath, fileName);
+                fs.writeFileSync( filePath,file.buffer);
+             
+
+                uploaded.push(fileName);
+            }
+        
+        return uploaded;
+          }catch {
+            return []
+          }
     }
     async delete(fileName:string,folder='uploads'):Promise<boolean>{
         try {
@@ -84,7 +96,6 @@ class productService{
      try {
             const data = await Product.updateOne({_id:id},productData);
             if (!data) {
-                log.warning("Ürün oluşturulamadı.");
                 return false;
             }
             return true;
