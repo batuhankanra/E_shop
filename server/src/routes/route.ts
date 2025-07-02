@@ -5,10 +5,11 @@ import productRoute from './product.route'
 import roleRoute from './role.route'
 import orderRoute from './order.route'
 import cartRoute from './cart.route'
+import { apiLimitter } from "../middleware/rateLimiter";
 
 const routes =Router()
 
-
+routes.use('/product',apiLimitter)
 routes.use('/categories',categoriesRoute)
 routes.use('/auth',authRoute)
 routes.use('/role',roleRoute)
