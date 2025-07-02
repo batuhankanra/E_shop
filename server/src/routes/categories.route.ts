@@ -1,5 +1,7 @@
 import { Router } from "express";
 import categoriesController from "../controller/categories.controller";
+import { TokenVerification } from "../middleware/tokenVerification";
+import { checkPermission } from "../middleware/permission";
 
 
 const routes =Router()
@@ -7,9 +9,9 @@ const routes =Router()
 
 routes.get('/',categoriesController.find)
 routes.get('/:id',categoriesController.findID)
-routes.post('/add',categoriesController.create)
-routes.patch('/:id',categoriesController.update)
-routes.delete('/:id',categoriesController.delete)
+routes.post('/add',TokenVerification,checkPermission('categories:add'),categoriesController.create)
+routes.patch('/:id',TokenVerification,checkPermission('categories:update'),categoriesController.update)
+routes.delete('/:id',TokenVerification,checkPermission('categories:delete'),categoriesController.delete)
 
 
 

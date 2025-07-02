@@ -7,11 +7,11 @@ import { checkPermission } from "../middleware/permission";
 const routes =Router()
 
 
-routes.get('/',TokenVerification,checkPermission('role:read'),OrderController.find)
-routes.get('/:id',TokenVerification,checkPermission('role:read'),OrderController.findId)
-routes.post('/add',TokenVerification,checkPermission('role:create'),OrderController.create)
-routes.patch('/:id',TokenVerification,checkPermission('role:update'),OrderController.update)
-routes.delete('/:id',TokenVerification,checkPermission('role:delete'),OrderController.delete)
+routes.get('/',TokenVerification,checkPermission('order:read'),OrderController.find)
+routes.get('/:id',TokenVerification,checkPermission('order:readId'),OrderController.findId)
+routes.post('/add',TokenVerification,checkPermission('order:create'),OrderController.create)
+routes.patch('/:id',TokenVerification,checkPermission('order:update'),OrderController.update)
+routes.delete('/:id',TokenVerification,checkPermission('order:delete'),OrderController.delete)
 
 
 
