@@ -2,8 +2,8 @@
 "use client"
 
 import React from 'react'
-import Sidebar from './(dashbord)/components/sidebar';
-import Header from './(dashbord)/components/header';
+import Sidebar from './components/sidebar';
+import Header from './components/header';
 
 const Layout = ({children}: Readonly<{children: React.ReactNode;}>) => {
   return (
