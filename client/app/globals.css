@@ -5,7 +5,7 @@
 @theme{
    --color-primary: #4B5563;   /* Yumuşak koyu gri - ana */
   --color-secondary: #9CA3AF; /* Soluk gri - destek */
-  --color-third: #A7C7E7;     /* Pastel mavi - vurgulu */
+  --color-third: #EFEFEF;     /* Pastel mavi - vurgulu */
   --color-fourth: #D4CFC9;    /* Taş rengi - nötr */
   --color-fifth: #BFA2DB;     /* Pastel mor - vurgu/uyarı */
 }

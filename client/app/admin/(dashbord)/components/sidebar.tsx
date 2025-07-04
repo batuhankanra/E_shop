@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Logo from './logo'
 import { IoMenu } from "react-icons/io5";
 import { IoMdBasket } from "react-icons/io";
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { BiSolidCategory } from "react-icons/bi";
 import { TbBasketHeart } from "react-icons/tb";
@@ -14,7 +14,7 @@ import { linkFont } from '@/app/lib/font';
 
 const Sidebar = () => {
   const path=usePathname()
-  console.log(path)
+  const sidebarRef=useRef<HTMLDivElement | null>(null)
   const [active,setActive]=useState<boolean>(false)
   const links = [
     { name: 'Anasayfa', href: '/admin' ,img:<FaHome/>},
@@ -29,8 +29,28 @@ const Sidebar = () => {
     setActive(!active)
   }
 
+  useEffect(()=>{
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target as Node)
+      ) {
+        setActive(false);
+      }
+    }
+    if (active) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  },[active])
+
   return (
-    <aside className={`bg-primary text-white max-w-64 md:w-full ${active ? 'w-64' : 'w-8'} transition-all ease-in duration-200 h-full min-h-screen sticky top-0 left-0   `}>
+    <aside ref={sidebarRef} className={`bg-primary text-white max-w-64 md:w-full ${active ? 'w-64' : 'w-8'} transition-all ease-in duration-200 h-full min-h-screen sticky top-0 left-0   z-4 `}>
       <div className='flex items-center border border-primary cursor-pointer  hover:text-secondary-secondary text-xl '>
         <button onClick={handleClick} type='button' className='p-1'> <IoMenu /></button>
         <span className={`${active ? 'flex' : 'hidden'} md:block transition-all `}><Logo /></span>
