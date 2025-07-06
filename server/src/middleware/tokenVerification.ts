@@ -5,26 +5,28 @@ import { config } from "../config";
 import userService from "../services/user.service";
 
 
-export const TokenVerification=async (req:Request,res:Response,next:NextFunction)=>{
-    const authHeader=req.headers.authorization
-    if(!authHeader || !authHeader.startsWith('Bearer')){
-        res.status(401).json({msg:'Yetkilendirme yok'})
-        return
-    }
-    const token =authHeader.split(' ')[1];
-    try{
-        const decoded=jwt.verify(token,config.JWT_SECRET)as JwtPayload
+export const TokenVerification= async (req: Request, res: Response, next: NextFunction) => {
+  const token = req.cookies?.token;
+  if (!token) {
+     res.status(401).json({ msg: 'Yetkilendirme yok' });
+     return
+  }
 
-        const extistUser=await userService.findId(decoded.id)
-        if(!extistUser){
-            res.status(400).json({msg:'Yetkiniz yok'})
-            return
-        }
-        req.user=extistUser
-        next()
+  try {
+    const decoded = jwt.verify(token, config.JWT_SECRET) as JwtPayload;
 
-    }catch(err){
-        log.error('auth middleware')
-        res.status(500).json({msg:'Yetkiniz yok'})
+    const existingUser = await userService.findId(decoded.id);
+
+    if (!existingUser) {
+       res.status(403).json({ msg: 'Yetkiniz yok' });
+       return
     }
-}
+
+    req.user = existingUser;
+    next();
+  } catch (err) {
+    log.error('Auth Middleware Error');
+     res.status(401).json({ msg: 'Geçersiz veya süresi dolmuş token' })
+    return;
+  }
+};

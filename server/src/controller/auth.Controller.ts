@@ -54,7 +54,7 @@ class AuthController{
                 return 
             }
             const token =generateToken(user)
-            res.status(200).json({msg:'Giriş başarılı',token})
+            res.status(200).cookie("token",token,{httpOnly:true,secure:process.env.NODE_ENV === "production", sameSite: "lax",maxAge: 24 * 60 * 60 * 1000}).json({msg:'Giriş başarılı',name:user.name,email:user.email})
             return
             
         
