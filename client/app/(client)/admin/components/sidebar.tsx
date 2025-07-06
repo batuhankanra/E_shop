@@ -50,20 +50,20 @@ const Sidebar = () => {
   },[active])
 
   return (
-    <aside ref={sidebarRef} className={`bg-primary text-white max-w-64 md:w-full ${active ? 'w-64' : 'w-8'} transition-all ease-in duration-200 h-full min-h-screen sticky top-0 left-0   z-4 `}>
-      <div className='flex items-center border border-primary cursor-pointer  hover:text-fifth text-xl '>
-        <button onClick={handleClick} type='button' className='p-1'> <IoMenu /></button>
-        <span className={`${active ? 'flex' : 'hidden'} md:block transition-all `}><Logo /></span>
-      </div>
-      <nav className="flex flex-col gap-4">
-        {links.map((link) => (
-          <Link key={link.href} href={link.href} className={`flex items-center text-lg p-2 gap-x-2  ${path===link.href ? 'text-fourth' : ''} ${linkFont.className}`}>
-            {link.img}
-            <h1 className={`${active ? 'block' : 'hidden'} md:block`}>{link.name}</h1>
-          </Link>
-        ))}
-      </nav>
-    </aside>
+      <aside ref={sidebarRef} className={`bg-primary text-white max-w-64 md:w-full ${active ? 'w-64' : 'w-8'} transition-all ease-in duration-200  min-h-screen fixed top-0 left-0   z-4 `}>
+        <div className='flex items-center border border-primary cursor-pointer  hover:text-fifth text-xl '>
+          <button onClick={handleClick} type='button' className='p-1'> <IoMenu /></button>
+          <span className={`${active ? 'flex' : 'hidden'} md:block transition-all `}><Logo /></span>
+        </div>
+        <nav className="flex flex-col gap-4">
+          {links.map((link) => (
+            <Link key={link.href} href={link.href} className={`flex items-center text-lg p-2 gap-x-2  hover:text-fourth ${path===link.href ? 'text-fourth' : ''} ${linkFont.className}`}>
+              {link.img}
+              <h1 className={`${active ? 'block' : 'hidden'} md:block`}>{link.name}</h1>
+            </Link>
+          ))}
+        </nav>
+      </aside>
   )
 }
 
