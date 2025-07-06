@@ -4,7 +4,7 @@ import axios, { AxiosError } from "axios";
 
 export const categoryGet=createAsyncThunk<CategoriesProps[],void,{rejectValue: errorRedux}>('categories/get',async (_,{rejectWithValue})=>{
     try{
-        const res=await axios.get('http://localhost:8080/api/categories')
+        const res=await axios.get('http://localhost:8080/api/categories',{withCredentials:true})
    
         return res.data
 

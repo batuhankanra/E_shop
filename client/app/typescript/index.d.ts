@@ -17,3 +17,18 @@ interface CategoriesProps{
 interface errorRedux {
     msg:string
 }
+
+
+interface loginProps{
+    email:string
+    password:string
+}
+interface login{
+    name:string
+    email:string
+    msg:string
+}
+interface initialStateLogin extends login{
+    error:string
+    status:'Loading' | 'Fail' | 'Success' | 'Idle'
+}

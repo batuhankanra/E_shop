@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import category from './features/categories'
+import login from './features/login'
 
 export const store = configureStore({
   reducer: {
-    category
+    category,
+    login
   },
 })
 
