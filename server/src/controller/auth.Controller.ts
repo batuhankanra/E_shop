@@ -68,7 +68,7 @@ class AuthController{
         return
     }
     public async logout(req:Request,res:Response){
-            res.clearCookie('token',{httpOnly:true,sameSite:'lax',secure:config.PRODUCTION})
+            res.clearCookie("token",{httpOnly:true,sameSite:'lax',secure:config.PRODUCTION})
             res.status(200).json({msg:'Çıkış yapıldı'})
     }
 }

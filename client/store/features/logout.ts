@@ -1,10 +1,11 @@
+import api from "@/app/lib/api";
 import { createSlice,createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import axios from "axios";
+
 
 
 export const logoutApi=createAsyncThunk('auth/logout',async ()=>{
     try{
-        const res=await axios.post('http://localhost:8080/api/auth/logout',{withCredentials:true})
+        const res=await api.post('http://localhost:8080/api/auth/logout',{withCredentials:true})
    
         return res.data
 
