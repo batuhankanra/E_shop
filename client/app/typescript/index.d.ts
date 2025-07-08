@@ -32,3 +32,16 @@ interface initialStateLogin extends login{
     error:string
     status:'Loading' | 'Fail' | 'Success' | 'Idle'
 }
+interface registerProps{
+    name:string
+    email:string
+    password:string
+}
+interface register extends registerProps{
+    msg:string
+}
+interface initialStateRegister {
+    msg:string
+    error:string
+    status:'Loading' | 'Fail' | 'Success' | 'Idle'
+}

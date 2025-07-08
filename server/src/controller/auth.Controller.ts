@@ -1,6 +1,7 @@
 import { Request,Response } from "express";
 import { generateToken } from "../utils/jwt";
 import userService from "../services/user.service";
+import { config } from "../config";
 
 
 class AuthController{
@@ -28,8 +29,7 @@ class AuthController{
                 res.status(400).json({msg:'Böyles bir email var'})
                 return
             }
-            const token =generateToken(user)
-            res.status(201).json({msg:'Kayit oluşturuldu',token})
+            res.status(201).json({msg:'Kayit oluşturuldu'})
             return 
         }catch(err) {
             res.status(500).json({msg:'server problem'})
@@ -62,6 +62,14 @@ class AuthController{
             res.status(500).json({msg:'server problem'})
             return
         }
+    }
+    public async loginControl(req:Request,res:Response){
+        res.json(200)
+        return
+    }
+    public async logout(req:Request,res:Response){
+            res.clearCookie('token',{httpOnly:true,sameSite:'lax',secure:config.PRODUCTION})
+            res.status(200).json({msg:'Çıkış yapıldı'})
     }
 }
 export default new AuthController()

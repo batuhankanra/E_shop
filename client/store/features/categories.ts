@@ -1,10 +1,11 @@
 import { createSlice,createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import axios, { AxiosError } from "axios";
+import { AxiosError } from "axios";
+import api from "@/app/lib/api";
 
 
 export const categoryGet=createAsyncThunk<CategoriesProps[],void,{rejectValue: errorRedux}>('categories/get',async (_,{rejectWithValue})=>{
     try{
-        const res=await axios.get('http://localhost:8080/api/categories',{withCredentials:true})
+        const res=await api.get('/categories',{withCredentials:true})
    
         return res.data
 

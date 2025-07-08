@@ -33,6 +33,7 @@ interface ConfigProps{
     DB_URL: string;
     JWT_SECRET: string;
     JWT_EXPIRES_IN:string;
+    PRODUCTION:boolean;
 }
 interface JwtPayload {
   id: string;

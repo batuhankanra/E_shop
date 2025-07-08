@@ -1,11 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
 import category from './features/categories'
 import login from './features/login'
+import logout from './features/logout'
+import register from './features/register'
+
 
 export const store = configureStore({
   reducer: {
     category,
-    login
+    login,
+    logout,
+    register
   },
 })
 

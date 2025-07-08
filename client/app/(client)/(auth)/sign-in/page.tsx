@@ -1,29 +1,30 @@
 'use client'
 import { loginApi } from '@/store/features/login';
+import { register } from '@/store/features/register';
 import { useAppDispatch, useAppSelector } from '@/store/hook';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import { FaEyeSlash ,FaEye } from "react-icons/fa";
 
-const Login = () => {
+const Register = () => {
   const [email,setEmail]=useState<string>('')
   const [name,setName]=useState<string>('')
   const [password,setPassword]=useState<string>('')
   const [aPassword,setAPassword]=useState<string>('')
   const [active,setActive]=useState<boolean>(false)
   const router=useRouter()
-  const {msg,error,status}=useAppSelector(state=>state.login)
+  const {msg,error,status}=useAppSelector(state=>state.register)
   if(status==='Success'){
     setTimeout(() => {
-      router.push('/')
+      router.push('/sign-up')
     }, 2000);
   }  
 
   const dispatch=useAppDispatch()
   const handleSubmit=async (e:any)=>{
     e.preventDefault()
-    dispatch(loginApi({ email, password }))
+    dispatch(register({ email,name, password }))
   }
 
   return (
@@ -93,4 +94,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Register
