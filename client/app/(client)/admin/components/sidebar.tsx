@@ -20,7 +20,7 @@ const Sidebar = () => {
     { name: 'Anasayfa', href: '/admin' ,img:<FaHome/>},
     { name: 'Ürünler', href: '/admin/products',img:<MdOutlineProductionQuantityLimits/> },
     { name: 'Siparişler', href: '/admin/orders',img:<IoMdBasket/> },
-    { name: 'Kategori', href: '/admin/categories',img:<BiSolidCategory /> },
+    { name: 'Kategori', href: '/admin/kategori',img:<BiSolidCategory /> },
     { name: 'Sepete Eklenenler', href: '/admin/basket',img:<TbBasketHeart /> },
     { name: 'Yetkiler', href: '/admin/permissions',img:<FaHandPaper /> },
     { name: 'Kullanıcılar', href: '/admin/users',img:<FaUser /> },

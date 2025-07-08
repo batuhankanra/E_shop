@@ -1,7 +1,11 @@
+import CategoryAdd from "./components/categoryadd"
 
 
-const modal=[
+const routeModal=[
     {
-        path:'category:add'
+        path:'category:add',
+        element:CategoryAdd
     }
 ]
+
+export default routeModal

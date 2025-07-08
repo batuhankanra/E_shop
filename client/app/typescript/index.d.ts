@@ -4,6 +4,7 @@
 interface ReduxData{
     data:CategoriesProps[]
     error:string
+    msg:string
 }
 interface CategoriesProps{
     
@@ -14,6 +15,7 @@ interface CategoriesProps{
     updatedAt:string
     _id:string
 }
+type AddCategory = Pick<CategoriesProps, 'name'>
 interface errorRedux {
     msg:string
 }
